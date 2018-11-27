@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 // Connection URLs
 const url = 'mongodb://localhost:27017/animals';
-var ObjectID = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 
 
 
@@ -17,22 +17,9 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
     next();
-
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// - это рабочий get запрос
-
-// app.get('/animals', (req, res, next) => {
-//     const client = new MongoClient(url, { useNewUrlParser: true });
-//     client.connect((err, client) => {
-//         client.db('animals').collection('animals').find({}).toArray((err, animals) => {
-//             res.send(animals);
-//             client.close();
-//         });
-//     });
-// });
 
 app.get('/animals/:id', (req, res, next) => {
     const id = req.params.id
