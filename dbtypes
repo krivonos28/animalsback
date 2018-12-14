@@ -1,0 +1,14 @@
+коллекцию в БД с назавнием "types"
+
+{
+    "typeId": "5bed209ecb2acfe0ac5bc720",
+    "typeName": "Tiger"
+}
+{
+    "tipeId": "5bed209ecb2acfe0ac5bc722",
+    "typeName": "Panda"
+}
+{
+    "typeId": "5bed1fbecb2acfe0ac5bc6cc",
+    "typeName": "Lion"
+}
