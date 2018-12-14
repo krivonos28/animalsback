@@ -1,5 +1,6 @@
 const express = require('express');
 const AnimalController = require('./controllers/animal-controller');
+const TypesController = require ('./controllers/type-controller')
 const bodyParser = require('body-parser');
 
 
@@ -25,9 +26,11 @@ class Application {
 		this.app.use(bodyParser.json());
 		this.app.use(bodyParser.urlencoded({ extended: true }));
 		const animalController = new AnimalController();
+		const typeController = new TypesController();
 		this.app.listen(3012, () => {
-			console.log('Server running')})
+			console.log('Server running')});
 		this.app.use(animalController.router);
+		this.app.use(typeController.router);
 	}
 }
 

@@ -1,4 +1,4 @@
-const Animal = require('../models/animal');
+const Animal = require('../models/model-mongo/animal');
 const express = require('express');
 
 
@@ -20,7 +20,7 @@ class AnimalController {
 		animal
 			.load()
 			.then((response) => {
-				res.send(response);
+				setTimeout(()=>res.send(response), 2000);
 			})
 			.catch((e) => {
 				console.log("get animal error",e);
@@ -49,7 +49,8 @@ class AnimalController {
 	getAnimals(req, res) {
 		Animal.getAnimals()
 			.then((response) => {
-				res.send(response);
+				console.log('get animals ', response)
+				setTimeout(()=> res.send(response), 2000);
 			})
 			.catch((e) => {
 				console.log("get animals error", e);

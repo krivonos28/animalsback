@@ -29,7 +29,7 @@ class Animal {
 			}
 
 			if (data.type) {
-				this.type = data.type;
+				this.type = new ObjectID(data.type);
 			}
 			if (Number(data.age) >= 0) {
 				this.age = Number(data.age);
@@ -79,7 +79,7 @@ class Animal {
 					{
 						from: 			'types',
 						localField: 	'type',
-						foreignField: 	'typeId',
+						foreignField: 	'_id',
 						as:   			'typesName'
 					}
 				},
@@ -136,12 +136,12 @@ class Animal {
 
 	static getAnimals() {
 		return new Promise((resolve, reject) => {
-			db.getConnection().collection('animals').aggregate([{
-				$lookup:
+			db.getConnection().collection('animals').aggregate([
+				{$lookup:
 				{
 					from: 'types',
 					localField: "type",
-					foreignField: "typeId",
+					foreignField: "_id",
 					as: 'typesName'
 				}
 			},
